@@ -46,7 +46,7 @@ def entrena_arbol(datos, target, clase_default,
         
     # Criterios para deterinar si es un nodo hoja
     if  len(datos) == 0 or len(atributos) == 0:
-        return NodoQ(terminal=False, clase_default=clase_default)
+        return NodoQ(terminal=True, clase_default=clase_default)
     
     clases = Counter(d[target] for d in datos)
     clase_default = clases.most_common(1)[0][0]
@@ -159,7 +159,12 @@ def imprime_arbol(nodo, nivel=0, valor=" "):
     if nodo.terminal:
         print("    " * nivel + f"Si valor es {valor}, la clase es {nodo.clase_default}")
     else:
-        print("    " * nivel + f"Si atributo es {nodo.atributo} entonces:")
+        if valor == " ": 
+            print("    " * nivel 
+                  + f"Si el atributo es {nodo.atributo} entonces:")
+        else:
+            print("    " * nivel 
+                  + f"Si el valor es {valor} y el atributo es {nodo.atributo} entonces:")
         for valor, hijo in nodo.hijos.items():
             imprime_arbol(hijo, nivel + 1, valor)
  
