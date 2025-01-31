@@ -29,9 +29,9 @@ for d in datos:
         d[f'feature_{i}'] = float(d[f'feature_{i}'])
     del(d['ID'])
 
-# Entrena un árbol de decisión con diferentes profundidades
+# Selecciona los artributos
 target = 'Diagnosis'
-atributos = [f'feature_{i}' for i in range(1, 31)]
+atributos = [target] + [f'feature_{i}' for i in range(1, 31)]
 
 # Selecciona un conjunto de entrenamiento y de validación
 random.seed(42)
@@ -62,11 +62,12 @@ for profundidad, error_entrenamiento, error_validacion in errores:
         + f'{error_entrenamiento:.2f}'.center(15) 
         + f'{error_validacion:.2f}'.center(15)
     )
+print('-' * 40 + '\n')
 
 #Entrena con la mejor profundidad
 arbol = an.entrena_arbol(datos, target, atributos, max_profundidad=3)
 error = an.evalua_arbol(arbol, datos_entrenamiento, target)
-print(f'\n\n\nError del modelo seleccionado entrenado con TODOS los datos: {error:.2f}')
+print(f'Error del modelo seleccionado entrenado con TODOS los datos: {error:.2f}')
 an.imprime_arbol(arbol)
 
     
