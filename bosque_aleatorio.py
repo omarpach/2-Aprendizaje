@@ -53,7 +53,8 @@ def predice_bosque_aleatorio(
     # Para cada dato
     for arbol in bosque:
         # Predice el valor
-        prediccion = an.predice_arbol(arbol, instancia)
+        prediccion = arbol.predice(instancia)
+        # prediccion = an.predice_arbol(arbol, instancia)
         predicciones.append(prediccion)
 
     # Escoge la predicción más común
