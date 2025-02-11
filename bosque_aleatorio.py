@@ -43,3 +43,18 @@ def separar_datos(
         # Agrega el subconjunto a la lista
         subconjuntos.append(subconjunto)
     return subconjuntos
+
+
+def predice_bosque_aleatorio(
+    bosque: list[an.NodoN], instancia: dict[str, float | int], target: str
+) -> any:
+    predicciones = []
+
+    # Para cada dato
+    for arbol in bosque:
+        # Predice el valor
+        prediccion = an.predice_arbol(arbol, instancia)
+        predicciones.append(prediccion)
+
+    # Escoge la predicción más común
+    return max(predicciones, key=predicciones.count)
