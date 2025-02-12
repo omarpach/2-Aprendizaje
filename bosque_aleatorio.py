@@ -46,7 +46,7 @@ def separar_datos(
 
 
 def predice_bosque_aleatorio(
-    bosque: list[an.NodoN], instancia: dict[str, float | int], target: str
+    bosque: list[an.NodoN], instancia: dict[str, float | int]
 ) -> any:
     predicciones = []
 
